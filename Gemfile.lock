@@ -79,6 +79,7 @@ GEM
       activesupport (~> 3.0)
       railties (~> 3.0)
       rspec (~> 2.5.0)
+    spork (0.8.4)
     sqlite3 (1.3.3)
     sqlite3-ruby (1.3.3)
       sqlite3 (>= 1.3.3)
@@ -102,6 +103,7 @@ DEPENDENCIES
   redgreen (= 1.2.2)
   rspec (= 2.5.0)
   rspec-rails (= 2.5.0)
+  spork
   sqlite3-ruby (= 1.3.3)
   test-unit (= 2.1.1)
   webrat (= 0.7.2)

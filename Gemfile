@@ -18,6 +18,7 @@ group :test do
   gem 'autotest-rails-pure', '4.1.2'
   gem 'redgreen', '1.2.2'
   gem 'test-unit', '2.1.1'
+  gem 'spork'
 end
 
 # Use unicorn as the web server
