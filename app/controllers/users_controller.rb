@@ -3,4 +3,9 @@ class UsersController < ApplicationController
     @title = "Enregistrement"
   end
 
+  def show
+
+    @user = User.find(params[:id])
+    @title = "Profil de #{User.name}"
+  end
 end
