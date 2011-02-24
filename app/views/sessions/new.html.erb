@@ -1,0 +1,16 @@
+<h1>Connexion</h1>
+<%= form_for(:session, :url => sessions_path) do |f| %>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Connexion" %>
+  </div>
+<% end %>
+
+<p>Nouvel utilisateur ? <%= link_to("Enregistrez-vous !", signup_path) %></p>
