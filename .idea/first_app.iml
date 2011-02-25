@@ -36,6 +36,12 @@
     </requirement>
     <requirement>
       <requirement>
+        <dependency name="faker" version="0.3.1" bound="EQUAL" git="false" path="false" doRequire="true" />
+      </requirement>
+      <source from="Gemfile" />
+    </requirement>
+    <requirement>
+      <requirement>
         <dependency name="gravatar_image_tag" version="1.0.0.pre2" bound="EQUAL" git="false" path="false" doRequire="true" />
       </requirement>
       <source from="Gemfile" />
@@ -88,6 +94,12 @@
       </requirement>
       <source from="Gemfile" />
     </requirement>
+    <requirement>
+      <requirement>
+        <dependency name="will_paginate" version="3.0.pre2" bound="EQUAL" git="false" path="false" doRequire="true" />
+      </requirement>
+      <source from="Gemfile" />
+    </requirement>
   </component>
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
@@ -126,10 +138,12 @@
     <orderEntry type="library" scope="PROVIDED" name="[gem] factory_girl (v1.3.3, /var/lib/gems/1.8/gems/factory_girl-1.3.3)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] factory_girl_rails (v1.0, /var/lib/gems/1.8/gems/factory_girl_rails-1.0)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] gravatar_image_tag (v1.0.0.pre2, /var/lib/gems/1.8/gems/gravatar_image_tag-1.0.0.pre2)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] tzinfo (v0.3.24, /var/lib/gems/1.8/gems/tzinfo-0.3.24)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] faker (v0.3.1, /var/lib/gems/1.8/gems/faker-0.3.1)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] will_paginate (v3.0.pre2, /var/lib/gems/1.8/gems/will_paginate-3.0.pre2)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] mail (v2.2.15, /var/lib/gems/1.8/gems/mail-2.2.15)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] rack-mount (v0.6.13, /var/lib/gems/1.8/gems/rack-mount-0.6.13)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] tzinfo (v0.3.24, /var/lib/gems/1.8/gems/tzinfo-0.3.24)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] arel (v2.0.8, /var/lib/gems/1.8/gems/arel-2.0.8)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] rack-mount (v0.6.13, /var/lib/gems/1.8/gems/rack-mount-0.6.13)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] treetop (v1.4.9, /var/lib/gems/1.8/gems/treetop-1.4.9)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] activemodel (v3.0.4, /var/lib/gems/1.8/gems/activemodel-3.0.4)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] abstract (v1.0.0, /var/lib/gems/1.8/gems/abstract-1.0.0)" level="application" />

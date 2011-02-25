@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       # Connexion de l'utilisateur
       sign_in user
       flash[:success] = "Vous êtes bien connecté"
-      redirect_to user
+      redirect_back_or(user)
     else
       # Erreur : on réaffiche le formulaire
       flash.now[:error] = "Utilisateur/Mot de passe incorrect(s)"
