@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
 
-  before_filter :authenticate, :only => [:index, :edit, :update]
+  before_filter :authenticate, :only => [:index, :edit, :update, :destroy]
   before_filter :correct_user, :only => [:edit, :update]
   before_filter :admin_user,   :only => :destroy
+  before_filter :already_signed_in, :only => [:create, :new]
 
   def index
     @title = 'Liste des utilisateurs'
@@ -49,8 +50,12 @@ class UsersController < ApplicationController
 
   def destroy
     user = User.find(params[:id])
-    user.destroy
-    flash[:success] = "L'utilisateur #{user.name} a bien été supprimé"
+    if (user != current_user)
+      user.destroy
+      flash[:success] = "L'utilisateur #{user.name} a bien été supprimé"
+    else
+      flash[:error]   = "Vous ne pouvez pas supprimer votre propre utilisateur"
+    end
     redirect_to users_path
   end
 
@@ -65,6 +70,6 @@ class UsersController < ApplicationController
     end
 
     def admin_user
-      redirect_to(root_path) unless (signed_in? && current_user.admin?)
+      redirect_to(root_path) unless current_user.admin?
     end
 end

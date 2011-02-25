@@ -51,6 +51,31 @@ describe UsersController do
         response.should have_selector("a", :href => "/users?page=2",
                                            :content => "Next")
       end
+
+      it "should redirect to root if trying to access new" do
+        get :new
+        response.should redirect_to root_path
+        flash[:notice].should =~ /déjà connecté/i
+      end
+
+      it "should redirect to root if trying to access create" do
+        get :create
+        response.should redirect_to root_path
+        flash[:notice].should =~ /déjà connecté/i
+      end
+
+      it "should have delete links for admin users" do
+        @user.toggle!(:admin)
+        get :index
+        response.should have_selector('a', :content => 'Supprimer')
+      end
+      
+      it "should not have delete links for users" do
+        get :index
+        response.should_not have_selector('a', :content => 'Supprimer')
+      end
+
+
     end
   end
 
@@ -282,8 +307,8 @@ describe UsersController do
     describe "as an admin user" do
 
       before(:each) do
-        admin = Factory(:user, :email => "admin@example.com", :admin => true)
-        test_sign_in(admin)
+        @admin = Factory(:user, :email => "admin@example.com", :admin => true)
+        test_sign_in(@admin)
       end
 
       it "should destroy the user" do
@@ -295,6 +320,12 @@ describe UsersController do
       it "should redirect to the users page" do
         delete :destroy, :id => @user
         response.should redirect_to(users_path)
+      end
+
+      it "should reject delete of current user" do
+        delete :destroy, :id =>  @admin
+        response.should redirect_to(users_path)
+        flash[:error].should =~ /vous ne pouvez pas supprimer votre propre utilisateur/i
       end
     end
   end

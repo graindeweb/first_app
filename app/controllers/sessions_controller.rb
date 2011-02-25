@@ -1,5 +1,8 @@
 class SessionsController < ApplicationController
+  before_filter :already_signed_in, :only => [:new, :create]
+
   def new
+    redirect_to root_path if signed_in?
     @title = 'Connexion'
   end
 
