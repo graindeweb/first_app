@@ -323,9 +323,11 @@ describe UsersController do
       end
 
       it "should reject delete of current user" do
-        delete :destroy, :id =>  @admin
-        response.should redirect_to(users_path)
-        flash[:error].should =~ /vous ne pouvez pas supprimer votre propre utilisateur/i
+        lambda do
+          delete :destroy, :id =>  @admin
+          flash[:error].should =~ /vous ne pouvez pas supprimer votre propre utilisateur/i
+          response.should redirect_to(users_path)
+        end.should_not change(User, :count)
       end
     end
   end
