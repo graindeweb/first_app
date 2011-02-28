@@ -11,6 +11,7 @@ FirstApp::Application.routes.draw do
   match '/signup',    :to => 'users#new'
   match '/signin',    :to => 'sessions#new'
   match '/signout',   :to => 'sessions#destroy'
+  match '/users/:id/microposts',    :to => 'microposts#index'
 
   root :to => "pages#home"
 
