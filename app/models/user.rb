@@ -56,7 +56,7 @@ class User < ActiveRecord::Base
 
   # Return microposts for a user
   def feed
-    Micropost.where("user_id = ?", id) # which is equal to the short sentence "microposts"
+    Micropost.from_users_followed_by(self)
   end
 
   def following?(followed)
