@@ -202,7 +202,7 @@ describe User do
         other_user = Factory(:user, :email => Factory.next(:email))
         @mp3 = Factory(:micropost, :user => other_user)
         @user.follow!(other_user)
-        @user.feed.should include(mp3)
+        @user.feed.should include(@mp3)
       end
     end
   end
