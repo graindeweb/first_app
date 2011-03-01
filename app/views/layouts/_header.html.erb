@@ -7,7 +7,7 @@
         <% if signed_in? %>
         <li><%= link_to("Profil", current_user) %></li>
         <li><%= link_to("Utilisateurs", users_path) %></li>
-        <li><%= link_to('Settings', edit_user_path(current_user))%></li>
+        <li><%= link_to('Paramètres', edit_user_path(current_user))%></li>
         <li><%= link_to("Déconnexion", signout_path, :method => :delete) %></li>
         <% else %>
         <li><%= link_to("Connexion", signin_path) %></li>

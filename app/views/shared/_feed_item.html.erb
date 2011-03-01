@@ -13,9 +13,9 @@
   </td>
   <% if current_user?(feed_item.user) %>
   <td>
-    <%= link_to "delete", feed_item, :method => :delete,
-                                     :confirm => "Etes-vous sûr ?",
-                                     :title => feed_item.content %>
+    <%= link_to "Supprimer", feed_item, :method => :delete,
+                                        :confirm => "Etes-vous sûr ?",
+                                        :title => feed_item.content %>
   </td>
   <% end %>
 </tr>
