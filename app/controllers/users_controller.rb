@@ -30,9 +30,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user       = User.find(params[:id])
+    @title      = "Profil de #{@user.name}"
+    @rss_url    = posts_user_url(@user, :rss)
     @microposts = @user.microposts.paginate(:page => params[:page])
-    @title = "Profil de #{@user.name}"
   end
 
   def edit
@@ -73,6 +74,14 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @users  = @user.send(action).paginate(:page => params[:page])
     render 'show_follow'
+  end
+
+  def posts
+    @user = User.find(params[:id])
+    respond_to do |format|
+      format.html  { @microposts = @user.microposts.paginate(:page => params[:page]) }
+      format.rss   { @microposts = @user.microposts(:limit => 100) }
+    end
   end
 
   private

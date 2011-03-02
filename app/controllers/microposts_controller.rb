@@ -3,8 +3,10 @@ class MicropostsController < ApplicationController
   before_filter :authorized_user, :only => [:destroy]
 
   def index
-    @user = User.find(params[:id])
-    @microposts = @user.feed.paginate(:page => params[:page])
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.rss  { @microposts = Micropost.all(:limit => 100) }
+    end
   end
 
   def create

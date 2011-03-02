@@ -3,11 +3,11 @@ FirstApp::Application.routes.draw do
 
   resources :users do
     member do
-      get :following, :followers
+      get :following, :followers, :posts
     end
   end
   resources :sessions,      :only => [:new, :create, :destroy]
-  resources :microposts,    :only => [:create, :destroy]
+  resources :microposts,    :only => [:create, :destroy, :index]
   resources :relationships, :only => [:create, :destroy]
 
   match '/contact',   :to => 'pages#contact'
@@ -16,7 +16,7 @@ FirstApp::Application.routes.draw do
   match '/signup',    :to => 'users#new'
   match '/signin',    :to => 'sessions#new'
   match '/signout',   :to => 'sessions#destroy'
-  match '/users/:id/microposts',    :to => 'microposts#index'
+  match '/last_posts', :to => 'microposts#all_for_rss'
 
   root :to => "pages#home"
 
@@ -68,7 +68,7 @@ FirstApp::Application.routes.draw do
   #   end
 
   # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
+  # just remember to delete public/posts.html.
   # root :to => "pages#home"
 
   # See how all your routes lay out with "rake routes"

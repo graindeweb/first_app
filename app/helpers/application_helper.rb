@@ -10,6 +10,14 @@ module ApplicationHelper
     end
   end
 
+  def rss_link
+    if @rss_url.nil?
+      auto_discovery_link_tag :rss, microposts_url(:rss)
+    else
+      auto_discovery_link_tag :rss, @rss_url
+    end
+  end
+
   def logo
     image_tag("logo.png", :alt => "Première application", :class => "round")
   end

@@ -3,7 +3,7 @@ require 'spec_helper'
 describe UsersController do
   render_views
 
-  describe "GET 'index'" do
+  describe "GET 'posts'" do
 
     describe "for non-signed-in users" do
       it "should deny access" do
