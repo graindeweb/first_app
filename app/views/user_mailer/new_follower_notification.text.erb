@@ -1,0 +1,7 @@
+Bonjour <%= @user.name %>,
+
+Vous avez un nouveau follower sur la magnifique FirstApplication:
+
+<%= "#{@follower.name} (" + user_url(@follower) + ")" %>
+
+Vous avez desormais <%= pluralize(@user.followers.count, 'follower') %>

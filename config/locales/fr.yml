@@ -188,3 +188,4 @@ fr:
       user:
         name:       "Nom"
         password:   "Mot de passe"
+        notified_new_follower: "Etre notifié(e) de mes nouveaux followers"

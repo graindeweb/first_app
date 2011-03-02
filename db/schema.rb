@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110228150939) do
+ActiveRecord::Schema.define(:version => 20110302103321) do
 
   create_table "microposts", :force => true do |t|
     t.string   "content"
@@ -37,7 +37,8 @@ ActiveRecord::Schema.define(:version => 20110228150939) do
     t.datetime "updated_at"
     t.string   "encrypted_password"
     t.string   "salt"
-    t.boolean  "admin",              :default => false
+    t.boolean  "admin",                 :default => false
+    t.boolean  "notified_new_follower", :default => true
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

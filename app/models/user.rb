@@ -12,7 +12,7 @@
 
 class User < ActiveRecord::Base
   attr_accessor :password
-  attr_accessible :name, :email, :password, :password_confirmation
+  attr_accessible :name, :email, :password, :password_confirmation, :notified_new_follower
 
   has_many :microposts,             :dependent    => :destroy
   has_many :relationships,          :foreign_key  => "follower_id",
@@ -31,9 +31,14 @@ class User < ActiveRecord::Base
                         :length       => { :maximum => 128 },
                         :format       => { :with => email_regex},
                         :uniqueness   => { :case_sensitive => false}
-  validates :password,  :presence     => true,
+  validates :password,  :presence => true,
                         :confirmation => true,
-                        :length       => { :within => 6..40 }
+                        :length => {:within => 6..40},
+                        :on => :create
+  validates :password,  :confirmation => true,
+                        :length => {:within => 6..40},
+                        :allow_blank => true,
+                        :on => :update
 
   before_save           :encrypt_password
 
@@ -70,11 +75,11 @@ class User < ActiveRecord::Base
   def unfollow!(followed)
     relationships.find_by_followed_id(followed).destroy
   end
-    
+  
   private
     def encrypt_password
       self.salt               = make_salt if new_record?
-      self.encrypted_password = encrypt(password)
+      self.encrypted_password = encrypt(password) if password
     end
 
     def encrypt(string)
@@ -88,5 +93,6 @@ class User < ActiveRecord::Base
     def secure_hash(string)
       Digest::SHA2.hexdigest(string)
     end
+
 
 end

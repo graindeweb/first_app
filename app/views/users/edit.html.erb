@@ -1,6 +1,10 @@
 <h1>Modification du profil</h1>
 <%= form_for(@user) do |f| %>
   <%= render 'fields', :f => f %>
+  <div class="field">
+    <%= f.check_box :notified_new_follower %>
+    <%= f.label :notified_new_follower %>
+  </div>
   <div class="actions">
     <%= f.submit "Enregistrer" %>
   </div>

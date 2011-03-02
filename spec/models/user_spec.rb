@@ -265,4 +265,24 @@ describe User do
 
   end
 
+  describe "notifications" do
+    before(:each) do
+      @user = User.create!(@attr)
+    end
+  
+
+    it "should respond to notified_new_follower" do
+      @user.should respond_to(:notified_new_follower)
+    end
+
+    it "should be notified by default" do
+      @user.should be_notified_new_follower
+    end
+
+    it "should be convertible to notify on new follower" do
+      @user.toggle!(:notified_new_follower)
+      @user.should_not be_notified_new_follower
+    end
+
+  end
 end

@@ -44,13 +44,13 @@ describe SessionsController do
       end
       
       it "should sign the user in" do
-        post :create, :session => @attr
+        post :create, @attr
         controller.current_user.should == @user
         controller.should be_signed_in
       end
 
       it "should redirect to user page after connexion" do
-        post :create, :session => @attr
+        post :create, @attr
         response.should redirect_to(user_path(@user))
       end
     end

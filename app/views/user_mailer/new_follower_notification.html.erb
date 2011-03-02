@@ -1,0 +1,15 @@
+<p>Bonjour <%= @user.name %>,</p>
+
+<p>Vous avez un nouveau follower sur la magnifique FirstApplication :</p>
+
+<table border="0">
+  <tr>
+    <td style="padding: 5px"><%= gravatar_for(@user, :size => 50) %></td>
+    <td style="padding: 5px">
+      <h2 style="padding-top: 0; margin-top: 0"><%= @follower.name %></h2>
+      <em><%= user_url(@follower) %></em>
+    </td>
+  </tr>
+</table>
+<p></p>
+<p>Vous avez desormais <strong><%= pluralize(@user.followers.count, 'follower') %></strong></p>

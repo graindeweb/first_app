@@ -21,6 +21,7 @@ class UsersController < ApplicationController
       # redirection vers l'action show
       sign_in(@user)
       flash[:success] = "Bienvenue sur la première application"
+      UserMailer.registration_confirmation(@user).deliver
       redirect_to @user
     else
       @title = "Enregistrement"
@@ -41,6 +42,11 @@ class UsersController < ApplicationController
   end
 
   def update
+    if params[:user][:password].blank?
+      params[:user].delete(:password)
+      params[:user].delete(:password_confirmation)
+    end
+
     if @user.update_attributes(params[:user])
       flash[:success] = 'Votre profil a bien été mis à jour'
       redirect_to @user

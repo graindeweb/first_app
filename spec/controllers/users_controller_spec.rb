@@ -231,7 +231,8 @@ describe UsersController do
 
       before(:each) do
         @attr = { :name => "New Name", :email => "user@example.org",
-                  :password => "barbaz", :password_confirmation => "barbaz" }
+                  :password => "barbaz", :password_confirmation => "barbaz",
+                  :notified_new_follower => true }
       end
 
       it "should change the user's attributes" do
@@ -239,6 +240,7 @@ describe UsersController do
         @user.reload
         @user.name.should  == @attr[:name]
         @user.email.should == @attr[:email]
+        @user.should be_notified_new_follower
       end
 
       it "should redirect to the user show page" do
